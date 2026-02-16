@@ -1,0 +1,748 @@
+/* ============================================
+   CHECKOUT PAGE - MERA'S E-COMMERCE
+   Modern Checkout & Payment Design
+   ============================================ */
+
+/* Main Checkout Page Container */
+.checkout-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  min-height: calc(100vh - 80px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+  position: relative;
+}
+
+/* Page Title */
+.checkout-container h1 {
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #000 0%, #333 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideDown 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   CHECKOUT LAYOUT
+   ============================================ */
+
+.checkout-content {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* ============================================
+   CHECKOUT FORM
+   ============================================ */
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Form Sections */
+.form-section {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.06),
+    0 4px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stagger animations */
+.form-section:nth-child(1) { animation-delay: 0.1s; }
+.form-section:nth-child(2) { animation-delay: 0.2s; }
+.form-section:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.form-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.1),
+    0 6px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Accent line at top of each section */
+.form-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    var(--accent-color) 0%, 
+    var(--secondary-color) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-section:hover::before {
+  opacity: 1;
+}
+
+/* Section Titles */
+.form-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.form-section h2::before {
+  content: '';
+  width: 6px;
+  height: 24px;
+  background: linear-gradient(180deg, var(--accent-color), var(--secondary-color));
+  border-radius: 3px;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+/* Input Fields */
+.form-group input,
+.form-section textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #ffffff;
+  color: #1f2937;
+  font-weight: 400;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  font-family: inherit;
+}
+
+.form-group input::placeholder,
+.form-section textarea::placeholder {
+  color: #9ca3af;
+  font-weight: 300;
+}
+
+.form-group input:hover,
+.form-section textarea:hover {
+  border-color: #9ca3af;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.form-group input:focus,
+.form-section textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background: #ffffff;
+  box-shadow: 
+    0 0 0 4px rgba(52, 152, 219, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.form-group input:focus ~ label,
+.form-section textarea:focus ~ label {
+  color: var(--accent-color);
+}
+
+/* Textarea specific */
+.form-section textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* Form Row (for city/zip) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* ============================================
+   PAYMENT METHODS
+   ============================================ */
+
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.payment-option::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent-color), var(--secondary-color));
+  transform: scaleY(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.payment-option:hover {
+  border-color: var(--accent-color);
+  background: rgba(52, 152, 219, 0.02);
+  transform: translateX(4px);
+}
+
+.payment-option:hover::before {
+  transform: scaleY(1);
+}
+
+/* Selected state */
+.payment-option:has(input[type="radio"]:checked) {
+  border-color: var(--accent-color);
+  background: rgba(52, 152, 219, 0.05);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+}
+
+.payment-option:has(input[type="radio"]:checked)::before {
+  transform: scaleY(1);
+}
+
+.payment-option input[type="radio"] {
+  margin-right: 1.25rem;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  accent-color: var(--accent-color);
+}
+
+.payment-option span {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.payment-option:has(input[type="radio"]:checked) span {
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+/* Payment icons (if you add them later) */
+.payment-option::after {
+  content: '';
+  margin-left: auto;
+  width: 40px;
+  height: 28px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.payment-option:hover::after,
+.payment-option:has(input[type="radio"]:checked)::after {
+  opacity: 1;
+}
+
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
+
+.btn-submit-order {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  color: var(--white);
+  padding: 1.4rem 2.5rem;
+  border-radius: 16px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 8px 24px rgba(46, 204, 113, 0.35);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.btn-submit-order::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-submit-order:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.btn-submit-order:hover:not(:disabled) {
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(46, 204, 113, 0.5);
+}
+
+.btn-submit-order:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-submit-order:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading state */
+.btn-submit-order.loading::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
+
+.error-message {
+  background: linear-gradient(135deg, #fee 0%, #fdd 100%);
+  color: var(--danger);
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  border-left: 4px solid var(--danger);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.15);
+  font-weight: 600;
+  animation: errorShake 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.error-message::before {
+  content: '⚠';
+  position: absolute;
+  left: 1.5rem;
+  font-size: 1.2rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ============================================
+   CHECKOUT SUMMARY (ORDER REVIEW)
+   ============================================ */
+
+.checkout-summary {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 4px 8px rgba(0, 0, 0, 0.04);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  animation: slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.checkout-summary h2 {
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Order Items List */
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar */
+.order-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.order-items::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.order-items::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.order-items::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Individual Order Item */
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.order-item:hover {
+  background: rgba(52, 152, 219, 0.05);
+  border-color: var(--accent-color);
+  transform: translateX(4px);
+}
+
+.order-item-info {
+  flex: 1;
+}
+
+.order-item-name {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.order-item-details {
+  font-size: 0.9rem;
+  color: var(--dark-gray);
+  font-weight: 500;
+}
+
+.order-item-price {
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--secondary-color), #c0392b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+/* Summary Divider */
+.order-summary-divider {
+  border: none;
+  border-top: 2px solid rgba(0, 0, 0, 0.08);
+  margin: 2rem 0;
+}
+
+/* Summary Rows */
+.order-summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.order-summary-row span:first-child {
+  color: var(--dark-gray);
+}
+
+.order-summary-row span:last-child {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* Total Row */
+.order-summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 3px solid rgba(0, 0, 0, 0.08);
+  letter-spacing: -0.02em;
+}
+
+.order-summary-total span:last-child {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #1a252f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .checkout-content {
+    grid-template-columns: 1fr 380px;
+  }
+}
+
+@media (max-width: 968px) {
+  .checkout-page {
+    padding: 2rem 1.5rem;
+  }
+
+  .checkout-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .checkout-summary {
+    position: static;
+    top: auto;
+  }
+
+  .checkout-container h1 {
+    font-size: 2rem;
+  }
+
+  .form-section {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .checkout-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .checkout-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-section {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .form-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .checkout-summary {
+    padding: 2rem 1.5rem;
+  }
+
+  .checkout-summary h2 {
+    font-size: 1.4rem;
+  }
+
+  .btn-submit-order {
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .order-summary-total {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-page {
+    padding: 1rem;
+  }
+
+  .checkout-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-section {
+    padding: 1.2rem 1rem;
+    border-radius: 16px;
+  }
+
+  .form-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group input,
+  .form-section textarea {
+    padding: 0.9rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .payment-option {
+    padding: 1.2rem;
+  }
+
+  .payment-option span {
+    font-size: 1rem;
+  }
+
+  .checkout-summary {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .order-item {
+    padding: 1rem;
+  }
+
+  .btn-submit-order {
+    padding: 1.1rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states for keyboard navigation */
+.form-group input:focus-visible,
+.form-section textarea:focus-visible,
+.payment-option:focus-within,
+.btn-submit-order:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .form-section,
+  .checkout-summary {
+    border: 2px solid #000;
+  }
+  
+  .form-group input,
+  .form-section textarea,
+  .payment-option {
+    border-width: 2px;
+  }
+}
